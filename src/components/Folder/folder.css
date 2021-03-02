@@ -80,7 +80,7 @@
 
 .folder::before,
 .folder .folder-grid .item-wrapper::before {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: 50%;
   left: 50%;

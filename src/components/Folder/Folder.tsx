@@ -8,23 +8,45 @@ type Props = {
   style?: React.CSSProperties
 }
 
+/** Folder Component */
 function Folder(props: Props) {
   const { className, items = [], style: propsStyle } = props
 
-  // const [items] = useState([1, 2, 3])
-
+  // state of folder opening
   const [open, setOpen] = useState(false)
+
+  const folderRef = useRef<HTMLDivElement>(null)
 
   const columns = useMemo(() => Math.ceil(Math.sqrt(items.length)), [items])
 
   const rows = useMemo(() => Math.ceil(items.length / columns), [items, columns])
 
+  // dynamic styles of folder container
   const folderStyles: React.CSSProperties = useMemo(() => {
     const style: React.CSSProperties = {}
 
-    return style
-  }, [open])
+    if (open) {
+      const folder = folderRef.current!
 
+      const { left, top, width: w, height: h } = folder.getBoundingClientRect()
+      const width = 125 * columns
+      const height = 125 * rows
+
+      style.margin = "0"
+      style.position = "fixed"
+      style.left = left - (width - w) / 2 - 2 + "px"
+      style.top = top - (height - h) / 2 - 2 + "px"
+      style.width = width + "px"
+      style.height = height + "px"
+      style.borderRadius = "8px"
+      style.borderColor = "transparent"
+      style.boxShadow = `0 2px 8px 0 rgba(0, 0, 0, 0.65)`
+    }
+
+    return style
+  }, [open, columns, rows])
+
+  // dynamic styles of grid container
   const gridStyles: React.CSSProperties = useMemo(() => {
     const style: React.CSSProperties = {
       gridTemplateColumns: `repeat(${columns}, 1fr)`,
@@ -41,6 +63,7 @@ function Folder(props: Props) {
     return style
   }, [items, rows, columns, open])
 
+  // calculate classname of grid
   const gridClassName = useMemo(() => {
     switch (items.length) {
       case 1:
@@ -54,38 +77,20 @@ function Folder(props: Props) {
     }
   }, [items])
 
-  const folderRef = useRef<HTMLDivElement>(null)
-
   const handleDocumentClick = useCallback((event: MouseEvent) => {
     event.preventDefault()
     event.stopPropagation()
 
     setOpen(false)
 
-    const folder = folderRef.current!
-    folder.removeAttribute("style")
-
     // clear listener
     document.removeEventListener("click", handleDocumentClick)
   }, [])
 
-  function handleClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  function handleFolderClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     event.stopPropagation()
-    const { currentTarget: target } = event
-    const { left, top, width: w, height: h } = target.getBoundingClientRect()
-    const width = 125 * columns
-    const height = 125 * rows
 
     setOpen(true)
-    target.style.margin = "0"
-    target.style.position = "fixed"
-    target.style.left = left - (width - w) / 2 - 2 + "px"
-    target.style.top = top - (height - h) / 2 - 2 + "px"
-    target.style.width = width + "px"
-    target.style.height = height + "px"
-    target.style.borderRadius = "8px"
-    target.style.borderColor = "transparent"
-    target.style.boxShadow = `0 2px 8px 0 rgba(0, 0, 0, 0.65)`
 
     document.addEventListener("click", handleDocumentClick)
   }
@@ -97,14 +102,14 @@ function Folder(props: Props) {
       ref={folderRef}
       className={clsx("folder", { open }, className)}
       style={{ ...propsStyle, ...folderStyles }}
-      onClick={handleClick}
+      onClick={handleFolderClick}
       onTransitionEnd={handleTransitionEnd}
     >
       <div className={clsx("folder-grid", gridClassName)} style={gridStyles}>
         {items.map((item) => (
           <div key={item}>
             <span>
-              <div className="item-wrapper">{}</div>
+              <div className="item-wrapper">{item}</div>
             </span>
           </div>
         ))}
