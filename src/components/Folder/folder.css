@@ -1,8 +1,8 @@
 .folder {
   --transition: all 215ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   position: absolute;
-  top: 200px;
-  left: 200px;
+  top: 0;
+  left: 0;
   border: 2px solid #fff;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: saturate(120%) blur(20px);
