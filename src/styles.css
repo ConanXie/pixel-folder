@@ -1,0 +1,21 @@
+html,
+body {
+  margin: 0;
+  color: #fff;
+}
+
+#root {
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.app {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  backdrop-filter: saturate(120%) blur(20px);
+}

@@ -1,0 +1,127 @@
+.folder {
+  --transition: all 215ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  border: 2px solid #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: saturate(120%) blur(20px);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0);
+  transition: var(--transition), border 185ms linear 185ms;
+  overflow: hidden;
+}
+
+.folder .folder-grid {
+  width: 150%;
+  height: 100%;
+  margin: 0 -25%;
+  display: grid;
+  transition: var(--transition);
+}
+
+.folder.open {
+  transition: var(--transition), border 0ms;
+}
+
+.folder.open .folder-grid {
+  width: 100%;
+  margin: 0;
+}
+
+.folder .folder-grid > div {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.folder .folder-grid > div > span {
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  height: 0;
+  padding-bottom: 80%;
+  background: #000;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.folder .folder-grid > div:nth-child(2) > span {
+  background: #f44336;
+}
+
+.folder .folder-grid > div:nth-child(3) > span {
+  background: #ff9800;
+}
+
+.folder .folder-grid > div:nth-child(4) > span {
+  background: #673ab7;
+}
+
+.folder .folder-grid .item-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.folder::before,
+.folder .folder-grid .item-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 2px;
+  background: #fff;
+}
+
+/* count three */
+.folder:not(.open) .folder-grid.count-three {
+  width: 140%;
+  margin: 0 -20%;
+}
+
+.folder:not(.open) .folder-grid.count-three > div > span {
+  width: 75%;
+  padding-bottom: 75%;
+}
+
+.folder:not(.open) .folder-grid.count-three > div:nth-child(1) {
+  top: 4px;
+  left: 3px;
+}
+
+.folder:not(.open) .folder-grid.count-three > div:nth-child(2) {
+  top: 4px;
+  left: -3px;
+}
+
+.folder:not(.open) .folder-grid.count-three > div:nth-child(3) {
+  top: 8px;
+  left: 35px;
+}
+
+/* count four */
+.folder:not(.open) .folder-grid.count-four {
+  margin: 0;
+}
+
+.folder:not(.open) .folder-grid.count-four > div > span {
+  width: 85%;
+  padding-bottom: 85%;
+}

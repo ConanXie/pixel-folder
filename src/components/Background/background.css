@@ -1,0 +1,10 @@
+#bg {
+  background: url(http://desk-fd.zol-img.com.cn/t_s1920x1080/g6/M00/03/00/ChMkKWA3dxeITiDAAAmmlaRrxYoAAKecQM0MkAACaat803.jpg)
+    center / cover no-repeat;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
