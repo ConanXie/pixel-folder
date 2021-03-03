@@ -49,21 +49,9 @@
   width: 80%;
   height: 0;
   padding-bottom: 80%;
-  background: #000;
+  background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
   border-radius: 50%;
   transition: var(--transition);
-}
-
-.folder .folder-grid > div:nth-child(2) > span {
-  background: #f44336;
-}
-
-.folder .folder-grid > div:nth-child(3) > span {
-  background: #ff9800;
-}
-
-.folder .folder-grid > div:nth-child(4) > span {
-  background: #673ab7;
 }
 
 .folder .folder-grid .item-wrapper {
@@ -124,4 +112,40 @@
 .folder:not(.open) .folder-grid.count-four > div > span {
   width: 85%;
   padding-bottom: 85%;
+}
+
+.folder .folder-grid > div:nth-child(2) > span {
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.folder .folder-grid > div:nth-child(3) > span {
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+.folder .folder-grid > div:nth-child(4) > span {
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+}
+
+.folder .folder-grid > div:nth-child(5) > span {
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+}
+
+.folder .folder-grid > div:nth-child(6) > span {
+  background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+}
+
+.folder .folder-grid > div:nth-child(7) > span {
+  background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
+}
+
+.folder .folder-grid > div:nth-child(8) > span {
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+}
+
+.folder .folder-grid > div:nth-child(9) > span {
+  background-image: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);
+}
+
+.folder .folder-grid > div:nth-child(10) > span {
+  background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
 }

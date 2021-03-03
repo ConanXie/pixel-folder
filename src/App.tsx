@@ -24,7 +24,7 @@ export default function App() {
       />
       <Folder
         style={{ left: `calc(50vw + ${offset}px)`, top: `calc(50vh + ${offset}px)` }}
-        items={[0, 1, 2, 3, 4]}
+        items={[0, 1, 2, 3, 4, 5, 6]}
       />
     </div>
   )

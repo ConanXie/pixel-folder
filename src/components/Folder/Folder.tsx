@@ -109,7 +109,7 @@ function Folder(props: Props) {
         {items.map((item) => (
           <div key={item}>
             <span>
-              <div className="item-wrapper">{item}</div>
+              <div className="item-wrapper">{}</div>
             </span>
           </div>
         ))}
